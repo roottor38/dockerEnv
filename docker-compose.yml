@@ -14,6 +14,7 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -40,6 +41,7 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "5000:5000"
       - "9600:9600"
@@ -60,6 +62,7 @@ services:
         source: ./kibana/config/kibana.yml
         target: /usr/share/kibana/config/kibana.yml
         read_only: true
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "5601:5601"
     networks:
